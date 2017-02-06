@@ -1,22 +1,44 @@
 import React from 'react';
 
-export function Todo(props) {
-  const { todo } = props;
+export function Parent(props) { 
+console.log('props', props) 
+  const { bricks, selectBrick, selected } = props;
+  const brickWidthMultiplier = 40;
+  const brickColors = ['red', 'blue', 'green', 'yellow'];
 
-  if(todo.isDone) {
-    return <strike>{todo.text}</strike>;
-  } else {
-    return <span>{todo.text}</span>;
-  }
-}
+  let layBricks = bricks.map((row, rowIndex) => {
+    let individualRow = row.map((brick, brickIndex)=> {
+      function handleClick(e) {
+        e.stopPropagation();
+        if(selected === undefined) {
+          selectBrick({row: rowIndex, index: brickIndex});
+        } else {
+          selectBrick(undefined);
+          console.log({row: rowIndex, index: brickIndex}); //go switch that sucka
+        }
 
-export function Parent(props) {  
-  const { bricks } = props.bricks;
-console.log('bricks', bricks)
+        
+      }
 
-  return (<div>
-    hi, whats up
-    </div>);
+      const divStyle = {
+        width: (brickWidthMultiplier * brick) + 'px',
+        background: brickColors[rowIndex]
+      };
+
+      return <div 
+        className='brick' 
+        style={divStyle}
+        onClick={handleClick}>
+          {brick}
+        </div>;
+    });
+    return (<div className='row' id={'row' + rowIndex}>{individualRow}</div>);
+  });
+
+  return (<div id='parent'>
+    {layBricks}
+    </div>
+  );
   // const { todos, toggleTodo, addTodo } = props;
 
   // const onSubmit = (event) => {

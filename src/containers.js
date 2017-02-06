@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import * as components from './components';
-// import { addTodo, toggleTodo } from './actions';
+import { selectBrick } from './actions';
 
 export const Parent = connect(
   function mapStateToProps(state) {
-  	console.log(state)
-    return { bricks: state };
+    return {
+    	bricks: state.bricks,
+    	selected: state.selected
+    };
   },
   function mapDispatchToProps(dispatch) {
     return {
-      // addTodo: text => dispatch(addTodo(text)),
-      // toggleTodo: id => dispatch(toggleTodo(id))
+      selectBrick: brick => dispatch(selectBrick(brick))
     };
   }
 )(components.Parent);

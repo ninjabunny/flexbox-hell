@@ -3,7 +3,7 @@ import React from 'react';
 export function Parent(props) { 
 console.log('props', props) 
   const { bricks, selectBrick, selected, switchBrick } = props;
-  const brickWidthMultiplier = 40;
+  const brickWidthMultiplier = 50;
   const brickColors = ['red', 'blue', 'green', 'yellow'];
 
   let layBricks = bricks.map((row, rowIndex) => {

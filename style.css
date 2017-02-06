@@ -8,11 +8,13 @@ html, body, input, button {
 }
 
 .brick {
-  height: 40px;
-  margin: 3px;
+  height: 60px;
+  margin: 0;
   text-align: center;
   vertical-align: middle;
-  line-height: 40px;
+  line-height: 60px;
+  box-sizing: border-box;
+  border: 1px grey solid;
 }
 
 .selected {

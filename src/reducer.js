@@ -1,21 +1,22 @@
 import { List, Map } from 'immutable';
 
-const init = List([]);
+const init = {
+  bricks: [
+    [1,2,3,4,5,6],
+    [1,2,3,4,5,6],
+    [1,2,3,4,5,6],
+    [1,2,3,4,5,6],
+    ]
+}
 
-export default function reducer(todos=init, action) {
+export default function reducer(state=init, action) {
   switch(action.type) {
     case 'ADD_TODO':
-      return todos.push(Map(action.payload));
+      return state;
     case 'TOGGLE_TODO':
-      return todos.map(t => {
-        if(t.get('id') === action.payload) {
-          return t.update('isDone', isDone => !isDone);
-        } else {
-          return t;
-        }
-      });
+      return state;
     default:
-      return todos;
+      return state;
   }
 }
 

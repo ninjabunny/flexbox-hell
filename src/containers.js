@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import * as components from './components';
-import { addTodo, toggleTodo } from './actions';
+// import { addTodo, toggleTodo } from './actions';
 
-export const TodoList = connect(
+export const Parent = connect(
   function mapStateToProps(state) {
-    return { todos: state };
+  	console.log(state)
+    return { bricks: state };
   },
   function mapDispatchToProps(dispatch) {
     return {
-      addTodo: text => dispatch(addTodo(text)),
-      toggleTodo: id => dispatch(toggleTodo(id))
+      // addTodo: text => dispatch(addTodo(text)),
+      // toggleTodo: id => dispatch(toggleTodo(id))
     };
   }
-)(components.TodoList);
+)(components.Parent);
 

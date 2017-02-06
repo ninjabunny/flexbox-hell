@@ -3,13 +3,13 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
-import { TodoList } from './containers';
+import { Parent } from './containers';
 
 const store = createStore(reducer);
 
 render(
   <Provider store={store}>
-    <TodoList />
+    <Parent />
   </Provider>,
   document.getElementById('app')
 );

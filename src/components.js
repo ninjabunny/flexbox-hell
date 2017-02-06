@@ -10,39 +10,46 @@ export function Todo(props) {
   }
 }
 
-export function TodoList(props) {
-  const { todos, toggleTodo, addTodo } = props;
+export function Parent(props) {  
+  const { bricks } = props.bricks;
+console.log('bricks', bricks)
 
-  const onSubmit = (event) => {
-    const input = event.target;
-    const text = input.value;
-    const isEnterKey = (event.which == 13);
-    const isLongEnough = text.length > 0;
+  return (<div>
+    hi, whats up
+    </div>);
+  // const { todos, toggleTodo, addTodo } = props;
 
-    if(isEnterKey && isLongEnough) {
-      input.value = '';
-      addTodo(text);
-    }
-  };
+  // const onSubmit = (event) => {
+  //   const input = event.target;
+  //   const text = input.value;
+  //   const isEnterKey = (event.which == 13);
+  //   const isLongEnough = text.length > 0;
 
-  const toggleClick = id => event => toggleTodo(id);
+  //   if(isEnterKey && isLongEnough) {
+  //     input.value = '';
+  //     addTodo(text);
+  //   }
+  // };
 
-  return (
-    <div className='todo'>
-      <input type='text'
-             className='todo__entry'
-             placeholder='Add todo'
-             onKeyDown={onSubmit} />
-      <ul className='todo__list'>
-        {todos.map(t => (
-          <li key={t.get('id')}
-              className='todo__item'
-              onClick={toggleClick(t.get('id'))}>
-            <Todo todo={t.toJS()} />
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  // const toggleClick = id => event => toggleTodo(id);
+
+  // return (
+  //   <div className='todo'>
+  //   hi whats up. do it now
+  //     <input type='text'
+  //            className='todo__entry'
+  //            placeholder='Add todo'
+  //            onKeyDown={onSubmit} />
+  //     <ul className='todo__list'>
+  //       {todos.map(t => (
+  //         <li key={t.get('id')}
+  //             className='todo__item'
+  //             onClick={toggleClick(t.get('id'))}>
+  //           <Todo todo={t.toJS()} />
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   </div>
+  // );
 }
 

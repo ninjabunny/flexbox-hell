@@ -1,3 +1,5 @@
+var LiveReloadPlugin = require('webpack-livereload-plugin');
+
 module.exports = {
   entry: './src/app.js',
   output: {
@@ -13,5 +15,8 @@ module.exports = {
         query: { presets: [ 'es2015', 'react' ] }
       }
     ]
-  }
+  },
+  plugins: [
+    new LiveReloadPlugin()
+  ]
 };

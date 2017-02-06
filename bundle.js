@@ -60,7 +60,7 @@
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _containers = __webpack_require__(190);
+	var _containers = __webpack_require__(191);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21563,7 +21563,8 @@
 	};
 
 /***/ },
-/* 190 */
+/* 190 */,
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21575,11 +21576,11 @@
 
 	var _reactRedux = __webpack_require__(180);
 
-	var _components = __webpack_require__(191);
+	var _components = __webpack_require__(192);
 
 	var components = _interopRequireWildcard(_components);
 
-	var _actions = __webpack_require__(192);
+	var _actions = __webpack_require__(193);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -21600,7 +21601,7 @@
 	})(components.Parent);
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21670,6 +21671,25 @@
 	    );
 	  });
 
+	  var addClass = "";
+
+	  function rule1() {
+	    for (var i = 0; i < bricks.length - 1; i++) {
+	      var arr1 = 0;
+	      var arr2 = 0;
+	      for (var j = 0; j < bricks[0].length - 1; j++) {
+	        arr1 += bricks[i][j];
+	        arr2 += bricks[i + 1][j];
+	        if (arr1 === arr2) {
+	          return '';
+	        }
+	      }
+	    }
+	    return ' weener ';
+	  }
+
+	  addClass += rule1();
+	  console.log(addClass);
 	  return _react2.default.createElement(
 	    'div',
 	    { id: 'parent' },
@@ -21683,7 +21703,7 @@
 	    _react2.default.createElement('br', null),
 	    _react2.default.createElement(
 	      'span',
-	      null,
+	      { className: addClass },
 	      'Rules: Arrange the bricks such that no crack in one row lines up with a crack in any other row. (2,184 solutions)'
 	    ),
 	    _react2.default.createElement('br', null),
@@ -21742,7 +21762,7 @@
 	}
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports) {
 
 	'use strict';

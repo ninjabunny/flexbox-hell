@@ -44,10 +44,29 @@ console.log('props', props)
     return (<div className='row' id={'row' + rowIndex}>{individualRow}</div>);
   });
 
+  let addClass = "";
+
+  function rule1() {
+    for (let i = 0; i < bricks.length - 1; i++) {
+      let arr1 = 0;
+      let arr2 = 0;
+      for (let j = 0; j < bricks[0].length - 1; j++) {
+        arr1 += bricks[i][j];
+        arr2 += bricks[i + 1][j];
+        if (arr1 === arr2) {
+          return '';
+        }
+      }          
+    }
+    return ' weener ';
+  }
+
+  addClass += rule1();
+console.log(addClass);
   return (<div id='parent'>
     {layBricks}<br />
     <span>Instructions: To move a brick, click one and then another of the same color.</span><br />
-    <span>Rules: Arrange the bricks such that no crack in one row lines up with a crack in any other row. (2,184 solutions)</span><br />
+    <span className={addClass}>Rules: Arrange the bricks such that no crack in one row lines up with a crack in any other row. (2,184 solutions)</span><br />
     <span>Challenge 1: find a solution that has 180° symmetry, one where the solution looks the same after you turn it upside down. (56 solutions)</span><br />
     <span>Challenge 2: find a solution where no two pieces of the same size (4 units or less) overlap each other vertically. (5 solutions)</span><br />
     <span>Challenge 3: find a solution that satisfies Challenges 1 and 2. 1 solution.</span>

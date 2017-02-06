@@ -25,3 +25,7 @@ html, body, input, button {
   box-sizing: border-box;
   border: 3px black solid;
 }
+
+.weener {
+  color: green;
+}

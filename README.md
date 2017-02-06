@@ -1,8 +1,6 @@
-# How to Build a Todo App Using React, Redux, and Immutable.js
+# Host
 
-Dan Prince shows how to build a Todo app using React, Redux, and Immutable.js.
-
-http://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js/
+http://ninjabunny.github.io/flexbox-hell
 
 ## Requirements
 

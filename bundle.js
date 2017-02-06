@@ -60,7 +60,7 @@
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _containers = __webpack_require__(191);
+	var _containers = __webpack_require__(190);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21563,8 +21563,7 @@
 	};
 
 /***/ },
-/* 190 */,
-/* 191 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21576,11 +21575,11 @@
 
 	var _reactRedux = __webpack_require__(180);
 
-	var _components = __webpack_require__(192);
+	var _components = __webpack_require__(191);
 
 	var components = _interopRequireWildcard(_components);
 
-	var _actions = __webpack_require__(193);
+	var _actions = __webpack_require__(192);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -21601,7 +21600,7 @@
 	})(components.Parent);
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21674,7 +21673,37 @@
 	  return _react2.default.createElement(
 	    'div',
 	    { id: 'parent' },
-	    layBricks
+	    layBricks,
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      'span',
+	      null,
+	      'Instructions: To move a brick, click one and then another of the same color.'
+	    ),
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      'span',
+	      null,
+	      'Rules: Arrange the bricks such that no crack in one row lines up with a crack in any other row. (2,184 solutions)'
+	    ),
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      'span',
+	      null,
+	      'Challenge 1: find a solution that has 180\xB0 symmetry, one where the solution looks the same after you turn it upside down. (56 solutions)'
+	    ),
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      'span',
+	      null,
+	      'Challenge 2: find a solution where no two pieces of the same size (4 units or less) overlap each other vertically. (5 solutions)'
+	    ),
+	    _react2.default.createElement('br', null),
+	    _react2.default.createElement(
+	      'span',
+	      null,
+	      'Challenge 3: find a solution that satisfies Challenges 1 and 2. 1 solution.'
+	    )
 	  );
 	  // const { todos, toggleTodo, addTodo } = props;
 
@@ -21713,7 +21742,7 @@
 	}
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports) {
 
 	'use strict';

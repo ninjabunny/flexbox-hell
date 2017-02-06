@@ -3,6 +3,10 @@ html, body, input, button {
   font-size: 20px;
 }
 
+#app {
+  display: flex;
+  justify-content: center;
+}
 .row {
   display: flex;
 }

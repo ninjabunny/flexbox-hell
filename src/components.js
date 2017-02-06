@@ -45,7 +45,12 @@ console.log('props', props)
   });
 
   return (<div id='parent'>
-    {layBricks}
+    {layBricks}<br />
+    <span>Instructions: To move a brick, click one and then another of the same color.</span><br />
+    <span>Rules: Arrange the bricks such that no crack in one row lines up with a crack in any other row. (2,184 solutions)</span><br />
+    <span>Challenge 1: find a solution that has 180° symmetry, one where the solution looks the same after you turn it upside down. (56 solutions)</span><br />
+    <span>Challenge 2: find a solution where no two pieces of the same size (4 units or less) overlap each other vertically. (5 solutions)</span><br />
+    <span>Challenge 3: find a solution that satisfies Challenges 1 and 2. 1 solution.</span>
     </div>
   );
   // const { todos, toggleTodo, addTodo } = props;

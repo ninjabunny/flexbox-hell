@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import * as components from './components';
-import { selectBrick } from './actions';
+import { selectBrick, switchBrick } from './actions';
 
 export const Parent = connect(
   function mapStateToProps(state) {
@@ -11,7 +11,8 @@ export const Parent = connect(
   },
   function mapDispatchToProps(dispatch) {
     return {
-      selectBrick: brick => dispatch(selectBrick(brick))
+      selectBrick: brick => dispatch(selectBrick(brick)),
+      switchBrick: brick => dispatch(switchBrick(brick))
     };
   }
 )(components.Parent);

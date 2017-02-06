@@ -7,3 +7,9 @@ export function selectBrick(brick) {
   };
 }
 
+export function switchBrick(brick) {
+  return {
+    type: 'SWITCH_BRICK',
+    payload: brick
+  };
+}

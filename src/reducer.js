@@ -13,9 +13,11 @@ export default function reducer(state=init, action) {
   switch(action.type) {
     case 'SELECT_BRICK':
       state.selected = action.payload;
+      return Object.assign({}, state);
+    case 'SWITCH_BRICK':
+      let { row, index } = action.payload;
+      state.bricks[row].move(state.selected.index, index);
       return Object.assign({}, state)
-    case 'ADD_TODO':
-      return state;
     case 'TOGGLE_TODO':
       return state;
     default:
@@ -23,3 +25,13 @@ export default function reducer(state=init, action) {
   }
 }
 
+Array.prototype.move = function (old_index, new_index) {
+    if (new_index >= this.length) {
+        var k = new_index - this.length;
+        while ((k--) + 1) {
+            this.push(undefined);
+        }
+    }
+    this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+    return this; // for testing purposes
+};

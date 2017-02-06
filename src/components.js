@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Parent(props) { 
 console.log('props', props) 
-  const { bricks, selectBrick, selected } = props;
+  const { bricks, selectBrick, selected, switchBrick } = props;
   const brickWidthMultiplier = 40;
   const brickColors = ['red', 'blue', 'green', 'yellow'];
 
@@ -13,20 +13,29 @@ console.log('props', props)
         if(selected === undefined) {
           selectBrick({row: rowIndex, index: brickIndex});
         } else {
-          selectBrick(undefined);
-          console.log({row: rowIndex, index: brickIndex}); //go switch that sucka
-        }
-
-        
+          if (selected.row === rowIndex) {
+            switchBrick({row: rowIndex, index: brickIndex});
+            selectBrick(undefined);  
+          } else {
+            selectBrick({row: rowIndex, index: brickIndex});
+          }
+        } 
       }
 
+      let classNames = 'brick '
+      if (selected) {
+        if (selected.row === rowIndex && selected.index === brickIndex) {
+          classNames += 'selected';
+        }
+      }
+      
       const divStyle = {
         width: (brickWidthMultiplier * brick) + 'px',
         background: brickColors[rowIndex]
       };
 
       return <div 
-        className='brick' 
+        className={classNames}
         style={divStyle}
         onClick={handleClick}>
           {brick}

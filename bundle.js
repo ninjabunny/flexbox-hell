@@ -60,7 +60,7 @@
 
 	var _reducer2 = _interopRequireDefault(_reducer);
 
-	var _containers = __webpack_require__(191);
+	var _containers = __webpack_require__(190);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21537,8 +21537,13 @@
 	    case 'SELECT_BRICK':
 	      state.selected = action.payload;
 	      return Object.assign({}, state);
-	    case 'ADD_TODO':
-	      return state;
+	    case 'SWITCH_BRICK':
+	      var _action$payload = action.payload,
+	          row = _action$payload.row,
+	          index = _action$payload.index;
+
+	      state.bricks[row].move(state.selected.index, index);
+	      return Object.assign({}, state);
 	    case 'TOGGLE_TODO':
 	      return state;
 	    default:
@@ -21546,9 +21551,19 @@
 	  }
 	}
 
+	Array.prototype.move = function (old_index, new_index) {
+	  if (new_index >= this.length) {
+	    var k = new_index - this.length;
+	    while (k-- + 1) {
+	      this.push(undefined);
+	    }
+	  }
+	  this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+	  return this; // for testing purposes
+	};
+
 /***/ },
-/* 190 */,
-/* 191 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21560,11 +21575,11 @@
 
 	var _reactRedux = __webpack_require__(180);
 
-	var _components = __webpack_require__(192);
+	var _components = __webpack_require__(191);
 
 	var components = _interopRequireWildcard(_components);
 
-	var _actions = __webpack_require__(193);
+	var _actions = __webpack_require__(192);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -21577,12 +21592,15 @@
 	  return {
 	    selectBrick: function selectBrick(brick) {
 	      return dispatch((0, _actions.selectBrick)(brick));
+	    },
+	    switchBrick: function switchBrick(brick) {
+	      return dispatch((0, _actions.switchBrick)(brick));
 	    }
 	  };
 	})(components.Parent);
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21602,7 +21620,8 @@
 	  console.log('props', props);
 	  var bricks = props.bricks,
 	      selectBrick = props.selectBrick,
-	      selected = props.selected;
+	      selected = props.selected,
+	      switchBrick = props.switchBrick;
 
 	  var brickWidthMultiplier = 40;
 	  var brickColors = ['red', 'blue', 'green', 'yellow'];
@@ -21614,8 +21633,19 @@
 	        if (selected === undefined) {
 	          selectBrick({ row: rowIndex, index: brickIndex });
 	        } else {
-	          selectBrick(undefined);
-	          console.log({ row: rowIndex, index: brickIndex }); //go switch that sucka
+	          if (selected.row === rowIndex) {
+	            switchBrick({ row: rowIndex, index: brickIndex });
+	            selectBrick(undefined);
+	          } else {
+	            selectBrick({ row: rowIndex, index: brickIndex });
+	          }
+	        }
+	      }
+
+	      var classNames = 'brick ';
+	      if (selected) {
+	        if (selected.row === rowIndex && selected.index === brickIndex) {
+	          classNames += 'selected';
 	        }
 	      }
 
@@ -21627,7 +21657,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        {
-	          className: 'brick',
+	          className: classNames,
 	          style: divStyle,
 	          onClick: handleClick },
 	        brick
@@ -21682,7 +21712,7 @@
 	}
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21691,6 +21721,7 @@
 	  value: true
 	});
 	exports.selectBrick = selectBrick;
+	exports.switchBrick = switchBrick;
 	var uid = function uid() {
 	  return Math.random().toString(34).slice(2);
 	};
@@ -21698,6 +21729,13 @@
 	function selectBrick(brick) {
 	  return {
 	    type: 'SELECT_BRICK',
+	    payload: brick
+	  };
+	}
+
+	function switchBrick(brick) {
+	  return {
+	    type: 'SWITCH_BRICK',
 	    payload: brick
 	  };
 	}
